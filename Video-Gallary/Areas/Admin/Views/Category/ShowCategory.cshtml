@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Video_Gallary.Areas.Admin.Models.Category>
+@{
+    ViewData["Title"] = "ShowCategory";
+}
+<div class="content-wrapper">
+    <a asp-action="Create">Create</a>
+    <h1>Show All Category</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Created On</th>
+                <th>Updated</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cat in Model)
+            {
+            <tr>
+                <td>@cat.Id</td>
+                <td>@cat.Name</td>
+                <td><img src="../../@cat.Image" height="70" width="70" /></td>
+                <td>@cat.Created_On</td>
+                <td>@{@cat.Updated_On}</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Category" asp-route-id="@cat.Id">Edit</a>|
+
+                    <a asp-action="Delete" asp-controller="Category" asp-route-id="@cat.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
